@@ -1,1 +1,59 @@
-Essential Businesses
+<head>
+    <title>Essential Businesses: Sacramento</title>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <style>
+        #map{ width: 100%; height: 100%; }
+        body {background-color: lightcoral;}
+    </style>
+</head>
+<body>
+
+  <div id="map"></div>
+
+  <script>
+
+  // set center coordinates
+  var coords = [38.58, -121.49];
+  // set default zoom
+  var zoomLevel = 13;
+  // initialize the map
+  var map = L.map('map').setView(coords, zoomLevel);
+  //set source for map tiles
+  ATTR = '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+        '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a> | ' +
+        '&copy; <a href="http://cartodb.com/attributions">CartoDB</a>';
+    CDB_URL = 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png';
+  // load a tile layer
+  L.tileLayer(CDB_URL, {
+        attribution: ATTR
+        }).addTo(map);
+
+  // create green restaurant icons
+  var greenIcon = new L.Icon({
+    iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  });
+
+  // create red grocery store icons
+  var redIcon = new L.Icon({
+	iconUrl: 'leaflet-color-markers-master/img/marker-icon-2x-black.png',
+	shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+	iconSize: [25, 41],
+	iconAnchor: [12, 41],
+	popupAnchor: [1, -34],
+	shadowSize: [41, 41]
+  });
+
+  L.marker([38.573938, -121.489958], {icon: greenIcon}).addTo(map);
+  L.marker([38.564742, -121.472570], {icon: redIcon}).addTo(map);
+
+  </script>
+
+
+</body>
+</html>
